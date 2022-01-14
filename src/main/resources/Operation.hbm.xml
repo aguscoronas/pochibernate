@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD//EN"  
+"http://hibernate.org/dtd/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+    <class name="ar.com.dcc.pochibernate.Operation" table="Operation">
+
+        <id name="operationId" type="int">
+            <column name="dccoperationid" />
+            <generator class="native" />
+        </id>
+
+        <property name="name" type="string">
+            <column name="dccname" length="40" not-null="true" unique="false" />
+        </property>
+
+		<property name="description" type="string">
+            <column name="dccdescription" length="280" not-null="false" unique="false" />
+        </property>
+		
+		<property name="type" type="character">
+            <column name="dcctype" not-null="false" unique="false" />
+        </property>
+		
+        
+    </class>
+</hibernate-mapping>

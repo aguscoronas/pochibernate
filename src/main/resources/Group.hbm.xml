@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD//EN"  
+"http://hibernate.org/dtd/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+    <class name="ar.com.dcc.pochibernate.Group" table="&quot;Group&quot;">
+
+        <id name="groupId" type="int">
+            <column name="dccgroupid" />
+            <generator class="native" />
+        </id>
+
+        <property name="name" type="string">
+            <column name="dccname" length="40" not-null="true" unique="true" />
+        </property>
+
+		<property name="description" type="string">
+            <column name="dccdescription" length="280" not-null="false" unique="false" />
+        </property>
+		
+		<set cascade="all" name="groupAssignments">
+         <key column = "dccgroupid"/>
+         <one-to-many class="ar.com.dcc.pochibernate.GroupAssignment"/>
+        </set>
+
+		<set cascade="all" name="permissions">
+         <key column = "dccgroupid"/>
+         <one-to-many class="ar.com.dcc.pochibernate.Permission"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

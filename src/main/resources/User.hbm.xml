@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD//EN"  
+"http://hibernate.org/dtd/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+    <class name="ar.com.dcc.pochibernate.User" table="User">
+
+        <id name="userId" type="int">
+            <column name="dccuserid" />
+            <generator class="native" />
+        </id>
+		
+        <property name="login" type="string">
+            <column name="dcclogin" length="40" not-null="true" unique="true" />
+        </property>
+		
+		 <!-- TODO: encryptar la pass -->
+		<property name="password" type="string">
+            <column name="dccpassword" length="40" not-null="true" unique="false" />
+        </property>
+		
+		<!-- TODO: implementar -->
+		<property name="lastLogin"  type="timestamp" >
+	        <column name="dcclastlogin" not-null="false" unique="false" />
+		</property>
+		
+		<many-to-one name="defaultGroup" column="dccdefaultgroup" class="ar.com.dcc.pochibernate.Group" not-null="true"/>
+		
+
+    </class>
+</hibernate-mapping>
